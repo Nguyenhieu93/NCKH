@@ -13,9 +13,9 @@ const firebaseConfig = {
   databaseURL: "https://hieu-1e3e4-default-rtdb.asia-southeast1.firebasedatabase.app", // Thêm dòng này
 }
 
-let app
-let auth
-let database
+let app 
+let auth : any
+let database 
 
 if (typeof window !== "undefined" && !getApps().length) {
   app = initializeApp(firebaseConfig)
