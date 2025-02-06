@@ -15,7 +15,7 @@ const firebaseConfig = {
 
 let app 
 let auth : any
-let database 
+let database : any
 
 if (typeof window !== "undefined" && !getApps().length) {
   app = initializeApp(firebaseConfig)
