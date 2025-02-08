@@ -9,7 +9,7 @@ export function Header() {
   const { user } = useAuth()
 
   return (
-    <header className="bg-[#476647] text-white p-2 flex justify-between items-center">
+    <header className="bg-[#476647] text-white p-2 flex justify-between items-center sticky top-0 z-10">
       <Link href="/" className="flex items-center gap-2 hover:opacity-90">
         <Leaf className="h-5 w-5" />
         <h1 className="text-lg font-semibold">My Garden</h1>
