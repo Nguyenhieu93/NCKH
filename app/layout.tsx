@@ -3,7 +3,7 @@ import "./globals.css"
 import { Sidebar } from "@/components/sidebar"
 import { Header } from "@/components/header"
 import { AuthProvider } from "./contexts/AuthContext"
-import type React from "react" // Added import for React
+import type React from "react"
 
 const inter = Inter({ subsets: ["latin"] })
 

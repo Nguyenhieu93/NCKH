@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { Thermometer, Droplets, AlertCircle } from 'lucide-react'
+import { Thermometer, Droplets, AlertCircle } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 
@@ -10,10 +10,6 @@ interface WeatherData {
   humidity: number
   city: string
   timestamp: string
-}
-
-interface WeatherError {
-  error: string
 }
 
 export default function DashboardPage() {
@@ -25,44 +21,33 @@ export default function DashboardPage() {
     const fetchWeatherData = async () => {
       try {
         setLoading(true)
-        console.log('Fetching weather data from API route')
-        const response = await fetch('/api/weather')
-        
-        const responseData = await response.text()
-        console.log('Raw API response:', responseData)
+        console.log("Fetching weather data from API route")
+        const response = await fetch("/api/weather")
 
         if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}, message: ${responseData}`)
+          throw new Error(`HTTP error! status: ${response.status}`)
         }
 
-        let data: WeatherData | WeatherError
-        try {
-          data = JSON.parse(responseData)
-        } catch (parseError) {
-          console.error('Error parsing JSON:', parseError)
-          throw new Error('Failed to parse weather data')
-        }
+        const data = await response.json()
 
-        if ('error' in data) {
+        if ("error" in data) {
           throw new Error(data.error)
         }
 
-        console.log('Processed weather data:', data)
+        console.log("Processed weather data:", data)
         setWeatherData(data)
         setError(null)
       } catch (err) {
-        console.error('Error fetching weather:', err)
-        setError(err instanceof Error ? err.message : 'Failed to fetch weather data')
+        console.error("Error fetching weather:", err)
+        setError(err instanceof Error ? err.message : "Failed to fetch weather data")
         setWeatherData(null)
       } finally {
         setLoading(false)
       }
     }
 
-    // Fetch initial data
     fetchWeatherData()
 
-    // Set up polling every 5 minutes
     const interval = setInterval(fetchWeatherData, 5 * 60 * 1000)
 
     return () => clearInterval(interval)
@@ -90,7 +75,7 @@ export default function DashboardPage() {
               ) : weatherData ? (
                 `${weatherData.temperature.toFixed(1)}°C`
               ) : (
-                'N/A'
+                "N/A"
               )}
             </div>
             {weatherData && (
@@ -112,14 +97,10 @@ export default function DashboardPage() {
               ) : weatherData ? (
                 `${weatherData.humidity.toFixed(1)}%`
               ) : (
-                'N/A'
+                "N/A"
               )}
             </div>
-            {weatherData && (
-              <p className="text-xs text-gray-500 mt-1">
-                Location: {weatherData.city}
-              </p>
-            )}
+            {weatherData && <p className="text-xs text-gray-500 mt-1">Location: {weatherData.city}</p>}
           </CardContent>
         </Card>
       </div>

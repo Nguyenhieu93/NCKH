@@ -6,7 +6,7 @@ export default function HomePage() {
     <div className="max-w-4xl mx-auto space-y-8">
       <h1 className="text-4xl font-bold">Welcome to My Garden</h1>
       <p className="text-lg text-gray-600">
-        Monitor your garden&apos;s temperature and humidity in real-time.
+        Hi...
       </p>
       <div className="flex gap-4">
         <Button asChild>
