@@ -80,7 +80,7 @@ export default function AccountPage() {
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <Card className="w-[600px]">
         <CardHeader>
-          <CardTitle>Thông tin tài khoản</CardTitle>
+          <CardTitle>Thông tin cá nhân</CardTitle>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -117,18 +117,10 @@ export default function AccountPage() {
               Cập nhật thông tin
             </Button>
           </form>
-          <div className="mt-6 p-4 bg-gray-100 rounded-lg">
-            <h3 className="text-lg font-semibold mb-2">Thông tin đã lưu:</h3>
-            <p>Họ và tên: {userInfo.fullName}</p>
-            <p>Số điện thoại: {userInfo.phoneNumber}</p>
-            <p>Ngày sinh: {userInfo.dateOfBirth}</p>
-            <p>Địa chỉ: {userInfo.address}</p>
-          </div>
           {message && <p className="mt-4 text-center text-sm text-green-600">{message}</p>}
           <div className="mt-6">
             <p className="mb-2">Email: {user.email}</p>
-            <p className="mb-4">User ID: {user.uid}</p>
-            <Button onClick={handleSignOut} className="w-full" variant="outline">
+            <Button onClick={handleSignOut} className="w-full mt-4" variant="outline">
               Đăng xuất
             </Button>
           </div>
